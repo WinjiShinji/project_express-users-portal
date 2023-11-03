@@ -19,6 +19,13 @@ Data will be managed by the use of the MVC principles, using Mongoose & MongoDB 
 - Authorization.
 - JWT Tokens.
 
+## Process
+- Install Dependencies:
 
+  Express.js, cors, dotenv, b-crypt, 
+  MongoDB, Mongoose.
 
+- Setup Basic Express server environment:
+
+  server.js, routing, middleware, etc...
 
