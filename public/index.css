@@ -24,34 +24,33 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px ridge black;
-  background-color: steelblue;
-}
-
-header h1 {
-  margin-right: auto;
-  margin-left: 16px;
-  text-transform: uppercase;
-}
-
-header a {
-  margin: 1rem;
-  font-size: 1.25rem;
-  text-underline-offset: 2px;
-  color: black;
-}
-header a:hover {
-  color: white;
+  border-bottom: 2px ridge steelblue;
+  backdrop-filter: blur(15px);
 }
 
 .icon_home {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: auto;
+  
 }
 .icon_home:hover {
-  filter: invert(1);
+  filter: invert(0);
 }
+
+header a {
+  margin: 1rem;
+  font-size: 1.25rem;
+  text-underline-offset: 2px;
+  color: steelblue;
+  text-decoration: none;
+}
+header a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
 
 /* ---- Main ---- */
 
