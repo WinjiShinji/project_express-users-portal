@@ -1,9 +1,9 @@
 const fsPromises = require('fs').promises
 const path = require('path')
 
-const logError = async (code, message, origin) => {
+const logError = async (code, message, url, origin) => {
   const date = new Date().toUTCString()
-  const logItem = `${date}\t${code}\t${origin}\n${message}\n\n`
+  const logItem = `${date}\t${code}\t${url}\t${origin}\n${message}\n\n`
 
   try {
     await fsPromises.mkdir(path.join(__dirname, '..', 'logs'), {recursive: true})

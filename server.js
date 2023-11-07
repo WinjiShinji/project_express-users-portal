@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+const corsOptions = require('./config/corsOptions')
 const logEvent = require('./middleware/logEvent')
 
 // PORT //
@@ -12,13 +14,13 @@ app.use(logEvent)
 app.use(express.json())
 
 // CORS //
-// @TODO: setup cors options
+app.use(cors(corsOptions))
 
 // Static Files //
 app.use(express.static('public'))
 
-// Route Handler //
-app.use(require('./routes/root'))
+// Routes //
+app.use('/', require('./routes/root'))
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
