@@ -11,8 +11,4 @@ Router.get('/login|login(.html)?', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'views', 'login.html'))
 })
 
-Router.all('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'views', '404Error.html'))
-})
-
 module.exports = Router

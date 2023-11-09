@@ -29,3 +29,5 @@ Data will be managed by the use of the MVC principles, using Mongoose & MongoDB 
 
   server.js, routing, middleware, etc...
 
+- Setup CORS.
+- Setup MongoDB & Mongoose.
