@@ -27,7 +27,21 @@ Data will be managed by the use of the MVC principles, using Mongoose & MongoDB 
 
 - Setup Basic Express server environment:
 
-  server.js, routing, middleware, etc...
+  server.js, routing, middleware, JSON, etc...
 
 - Setup CORS.
 - Setup MongoDB & Mongoose.
+
+- Mongoose:
+
+  models, Schema...
+
+- CRUD Operations:
+ 
+  Controllers for Read, Write, Update & Delete.
+
+- Security:
+
+  Bcrypt, JWTs, Roles, Protected Routes.
+
+  Authorization & Authentication.

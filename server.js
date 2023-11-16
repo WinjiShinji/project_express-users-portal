@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const connectDB = require('./config/connectDB')
 const path = require('path')
 const logEvent = require('./middleware/logEvent')
+const cookieParser = require('cookie-parser')
 
 
 // PORT //
@@ -24,12 +25,20 @@ app.use(express.json())
 // CORS //
 app.use(cors(corsOptions))
 
+// Cookies Parser //
+app.use(cookieParser())
+
 // Static Files //
 app.use(express.static('public'))
 
 
 // Routes //
 app.use('/', require('./routes/root'))
+app.use('/register', require('./routes/register'))
+app.use('/login', require('./routes/login'))
+app.use('/logout', require('./routes/logout'))
+app.use('/refresh', require('./routes/refresh'))
+
 
 // API //
 app.use('/users', require('./routes/api/users'))
@@ -47,8 +56,9 @@ app.all('*', (req, res) => {
   }
 })
 
-
+// Database Connection Check //
 mongoose.connection.once('open', () => {
   console.log('Connected To Database')
-  app.listen(PORT, () => {console.log(`Server running on port ${PORT}`)})
 })
+
+app.listen(PORT, () => {console.log(`Server running on port ${PORT}`)})

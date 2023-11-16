@@ -1,13 +1,13 @@
-const model = require('../models/userSchema')
+const User = require('../models/userSchema')
 
-// Read //
+// Read Id //
 const getUserById = async (req, res) => {
   // Invalid ID Parameter
   if (!req?.params?.id) {
     return res.status(400).json({ message: 'ID parameter required!'})
   }
   // No ID
-  const user = await model.findOne({ _id: req.params.id }).exec()
+  const user = await User.findOne({ _id: req.params.id }).exec()
   if (!user) {
     return res.status(204).json({ message: 'No such user exists!'})
   }
@@ -15,8 +15,9 @@ const getUserById = async (req, res) => {
   return res.json(user)
 }
 
+// Read All //
 const getUsers = async (req, res) => {
-  const users = await model.find()
+  const users = await User.find()
   // No Users
   if (!users) {
     return res.status(204).json({ message: 'No users found!'})
@@ -33,7 +34,7 @@ const createNewUser = async (req, res) => {
   }
   // Create user data
   try {
-    const result = await model.create({
+    const result = await User.create({
       username: req.body.username
     })
     res.status(201).json(result)
@@ -49,13 +50,14 @@ const updateUser = async (req, res) => {
     return res.status(400).json({ message: 'ID parameter required'})
   }
   // Find user by ID
-  const user = await model.findOne({ _id: req.body.id }).exec()
+  const user = await User.findOne({ _id: req.body.id }).exec()
   // No User Exists
   if (!user) {
     return res.status(204).json({ message: `No user with ID: ${req.body.id}`})
   }
-  // Set firstname & lastname
+  // Update username
   if (req?.body?.username) user.username = req.body.username
+  // @TODO: Update password
   // Return Data
   const result = await user.save()
   res.json(result)
@@ -67,7 +69,7 @@ const deleteUser = async (req, res) => {
     return res.status(400).json({ message: 'Id Parameter required!'})
   }
   // Find user by ID
-  const user = await model.findOne({ _id: req.body.id }).exec()
+  const user = await User.findOne({ _id: req.body.id }).exec()
   // No User Exists
   if (!user) {
     return res.status(204).json({ message: `No user with ID: ${req.body.id}`})
